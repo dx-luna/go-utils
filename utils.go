@@ -1,5 +1,0 @@
-package utilq
-
-func JustTest() {
-
-}
