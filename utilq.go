@@ -1,9 +1,9 @@
 package utilq
 
 import (
-	"github.com/dx-luna/go-utils/floatq"
+	floatq "github.com/dx-luna/go-utils/float"
 	"github.com/dx-luna/go-utils/log"
-	"github.com/dx-luna/go-utils/stringq"
+	stringq "github.com/dx-luna/go-utils/string"
 )
 
 // exports

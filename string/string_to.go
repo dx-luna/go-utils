@@ -1,6 +1,10 @@
 package stringq
 
-import "strconv"
+import (
+	"strconv"
+
+	"github.com/ethereum/go-ethereum/common"
+)
 
 type String struct {
 	value string
@@ -31,4 +35,7 @@ func (str String) ToInterface() interface{} {
 }
 func (str String) ToBytes() []byte {
 	return []byte(str.value)
+}
+func (str String) ToAddress() common.Address {
+	return common.HexToAddress(str.value)
 }
