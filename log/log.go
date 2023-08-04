@@ -1,4 +1,4 @@
-package log
+package logq
 
 import (
 	"encoding/json"
