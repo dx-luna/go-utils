@@ -6,5 +6,5 @@ go get github.com/dx-luna/go-utils
 ```
 run
 ```sh
-nodemon --exec go run main.go --signal SIGTERM
+cd test && nodemon --exec go run main.go --signal SIGTERM
 ```
