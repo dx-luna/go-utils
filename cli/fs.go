@@ -16,15 +16,22 @@ func Check(e error, desc string) {
 		panic(e)
 	}
 }
-func ReadFile(dir string, dirname string, result any) error {
+func ReadJsonFile(dir string, dirname string, result any) error {
 	content, err := os.ReadFile(dir)
 	Check(err, "failed ReadFile : "+dirname)
 
-	logq.Success("success open file ", dirname)
+	// logq.Success("success open file ", dirname)
 	err = json.Unmarshal(content, &result)
 	Check(err, "failed unmarshal .json file : "+dirname)
 
 	return nil
+}
+func ReadFile(dir string, dirname string, result any) string {
+	content, err := os.ReadFile(dir)
+	Check(err, "failed ReadFile : "+dirname)
+
+	// logq.Success("success open file ", dirname)
+	return string(content)
 }
 
 func WriteFile(dir string, data interface{}) {
