@@ -1,4 +1,4 @@
-package logq
+package consoleq
 
 import "fmt"
 
@@ -37,17 +37,27 @@ var chalk = map[string]string{
 	"white":  "\033[97m",
 }
 
-func (blank Log) PrintColor(color string, input any) {
-	// type PrintL struct {
-	// 	Color string
-	// 	Input any
-	// 	Reset string
-	// }
-	// genr := PrintL{
-	// 	Color: color,
-	// 	Input: input,
-	// 	Reset: Chalk.Reset,
-	// }
-	// fmt.Println(genr)
-	fmt.Println(color, input, Chalk.Reset)
+func PrintColor(color string, input any) {
+	fmt.Println(chalk[color], input, Chalk.Reset)
+}
+func Success(input ...any) {
+	str := []any{Chalk.Green}
+	str = append(str, input...)
+	str = append(str, Chalk.Reset)
+	fmt.Println(str...)
+}
+func Error(input ...any) {
+	str := []any{Chalk.Red}
+	str = append(str, input...)
+	str = append(str, Chalk.Reset)
+	fmt.Println(str...)
+}
+func Warn(input ...any) {
+	str := []any{Chalk.Yellow}
+	str = append(str, input...)
+	str = append(str, Chalk.Reset)
+	fmt.Println(str...)
+}
+func Primary(input any) {
+	fmt.Println(Chalk.Cyan, input, Chalk.Reset)
 }

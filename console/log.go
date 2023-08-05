@@ -1,4 +1,4 @@
-package logq
+package consoleq
 
 import (
 	"encoding/json"
@@ -12,7 +12,7 @@ type Log struct {
 	val any
 }
 
-func (blank Log) ClearLog() {
+func Clear() {
 	fmt.Printf("\x1bc")
 }
 
@@ -31,7 +31,7 @@ func init() {
 		cmd.Run()
 	}
 }
-func (blank Log) ClearTerminal() {
+func ClearTerminal() {
 	value, ok := clear[runtime.GOOS] //runtime.GOOS -> linux, windows, darwin etc.
 	if ok {                          //if we defined a clear func for that platform:
 		value() //we execute it
@@ -39,11 +39,11 @@ func (blank Log) ClearTerminal() {
 		panic("Your platform is unsupported! I can't clear terminal screen :(")
 	}
 }
-func (blank Log) ViewJson(result ...interface{}) string {
+func ViewJson(result ...interface{}) string {
 	res, _ := json.MarshalIndent(result, "", "\t")
 	return string(res)
 }
-func (blank Log) PrintJson(result ...interface{}) {
+func PrintJson(result ...interface{}) {
 	res, _ := json.MarshalIndent(result, "", "\t")
 	fmt.Println(string(res))
 }

@@ -13,13 +13,13 @@ type Array struct {
 	ArrayUint    []uint
 }
 
-func (blank Array) NewArrayString(strs []string) Array {
+func NewArrayString(strs []string) Array {
 	return Array{ArrayString: strs}
 }
-func (blank Array) NewArrayFloat64(numbs []float64) Array {
+func NewArrayFloat64(numbs []float64) Array {
 	return Array{ArrayFloat64: numbs}
 }
-func (blank Array) NewArrayUInt(numbs []uint) Array {
+func NewArrayUInt(numbs []uint) Array {
 	return Array{ArrayUint: numbs}
 }
 func StringToFloat64(s string) float64 {
