@@ -12,8 +12,8 @@ import (
 
 func Check(e error, desc string) {
 	if e != nil {
-		logq.Error(desc)
-		panic(e)
+		logq.Error(desc, e)
+		// panic(e)
 	}
 }
 func ReadJsonFile(dir string, dirname string, result any) error {
@@ -26,21 +26,31 @@ func ReadJsonFile(dir string, dirname string, result any) error {
 
 	return nil
 }
-func ReadFile(dir string, dirname string, result any) string {
+func ReadFile(dir string, dirname string) (string, error) {
 	content, err := os.ReadFile(dir)
 	Check(err, "failed ReadFile : "+dirname)
+	if err != nil {
+		return "failed ReadFile : " + dirname, err
+	}
 
 	// logq.Success("success open file ", dirname)
-	return string(content)
+	return string(content), nil
 }
 
-func WriteFile(dir string, data interface{}) {
+func WriteFile(dir string, data interface{}) error {
 
 	file, err := json.MarshalIndent(data, "", " ")
 	Check(err, "error json.MarshalIndent")
+	if err != nil {
+		return err
+	}
 
 	err = ioutil.WriteFile(dir, file, 0644)
 	Check(err, "error writeFile")
+	if err != nil {
+		return err
+	}
+	return nil
 }
 func ReadDir(dir string) []string {
 
